@@ -1,0 +1,3 @@
+---
+deploy_dir: "/opt/glassfish"
+src_dir: "/var/lib/jenkins/workspace/JavaMaven/target"

@@ -1,0 +1,111 @@
+Started by user admin
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/lib/jenkins/workspace/JavaMaven
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Tool Install)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Git repo)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] git
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --resolve-git-dir /var/lib/jenkins/workspace/JavaMaven/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/koddas/war-web-project.git # timeout=10
+Fetching upstream changes from https://github.com/koddas/war-web-project.git
+ > git --version # timeout=10
+ > git --version # 'git version 1.8.3.1'
+ > git fetch --tags --progress https://github.com/koddas/war-web-project.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/master^{commit} # timeout=10
+Checking out Revision ffed0932546fc229b073862dc5945c7d63cebfce (refs/remotes/origin/master)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f ffed0932546fc229b073862dc5945c7d63cebfce # timeout=10
+ > git branch -a -v --no-abbrev # timeout=10
+ > git branch -D master # timeout=10
+ > git checkout -b master ffed0932546fc229b073862dc5945c7d63cebfce # timeout=10
+Commit message: "Merge pull request #7 from shivanisarthi/master"
+ > git rev-list --no-walk ffed0932546fc229b073862dc5945c7d63cebfce # timeout=10
+[Pipeline] sh
++ ls -la
+total 28
+drwxr-xr-x.  5 jenkins jenkins  172 Dec 10 08:44 .
+drwxr-xr-x. 15 jenkins jenkins  239 Dec 10 09:14 ..
+-rw-r--r--.  1 jenkins jenkins  927 Dec 10 08:08 azure-pipelines.yml
+-rw-r--r--.  1 jenkins jenkins   74 Dec 10 08:08 Dockerfile
+drwxr-xr-x.  8 jenkins jenkins  162 Dec 10 12:44 .git
+-rw-r--r--.  1 jenkins jenkins    9 Dec 10 08:08 .gitignore
+-rw-r--r--.  1 jenkins jenkins 1283 Dec 10 08:08 Jenkinsfile
+-rw-r--r--.  1 jenkins jenkins 1082 Dec 10 08:08 LICENSE
+-rw-r--r--.  1 jenkins jenkins 1154 Dec 10 08:08 pom.xml
+-rw-r--r--.  1 jenkins jenkins 3576 Dec 10 08:08 readme.md
+drwxr-xr-x.  3 jenkins jenkins   18 Dec 10 08:08 src
+drwxr-xr-x.  8 jenkins jenkins  142 Dec 10 09:48 target
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Assembling)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ mvn package
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------------------< koddas.web.war:wwp >-------------------------
+[INFO] Building WAR Web Project 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ war ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ wwp ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /var/lib/jenkins/workspace/JavaMaven/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.1:compile (default-compile) @ wwp ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ wwp ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /var/lib/jenkins/workspace/JavaMaven/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.1:testCompile (default-testCompile) @ wwp ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- surefire:3.2.2:test (default-test) @ wwp ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] --- war:3.4.0:war (default-war) @ wwp ---
+[INFO] Packaging webapp
+[INFO] Assembling webapp [wwp] in [/var/lib/jenkins/workspace/JavaMaven/target/wwp-1.0.0]
+[INFO] Processing war project
+[INFO] Copying webapp resources [/var/lib/jenkins/workspace/JavaMaven/src/main/webapp]
+[INFO] Building war: /var/lib/jenkins/workspace/JavaMaven/target/wwp-1.0.0.war
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  19.743 s
+[INFO] Finished at: 2023-12-10T12:45:25Z
+[INFO] ------------------------------------------------------------------------
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS

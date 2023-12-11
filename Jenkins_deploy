@@ -1,0 +1,10 @@
+pipeline {
+    agent any
+    stages{
+        stage('Deploy') { // deploy app
+            steps {
+                sh 'cd /home/centos && ansible-playbook -i inventory/hosts.yml  deploy.yml'
+            }
+        }
+    }
+}

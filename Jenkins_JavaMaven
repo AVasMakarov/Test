@@ -1,0 +1,19 @@
+pipeline {
+    agent any
+    tools {
+        maven '3.9.6'
+    }
+    stages{
+        stage('Git repo') { //download app repo
+            steps {
+                git branch: 'master', url: 'https://github.com/koddas/war-web-project.git'
+                sh 'ls -la'
+            }
+        }
+        stage('Assembling') { // assembling app
+            steps {
+                sh 'mvn package'
+            }
+        }
+    }
+}

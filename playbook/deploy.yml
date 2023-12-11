@@ -1,0 +1,9 @@
+---
+- name: Deploy apps
+  hosts: glassfish
+  tasks:
+    - name: Copy artifact 
+      become: true
+      ansible.builtin.copy:
+        src: "{{ src_dir }}/*.war"
+        dest: "{{ deploy_dir }}"
